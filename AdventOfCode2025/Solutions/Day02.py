@@ -13,13 +13,10 @@ def day02Q2(ranges):
     for start, end in ranges:
         for i in range(start, end + 1):
             s = str(i)
-            n = len(s)
-            for d in range(1, n//2+1):
-                if n % d == 0:
-                    slices = [s[d*i:d*(i+1)] for i in range(n//d)]
-                    if all(k == slices[0] for k in slices):
-                        ans += i
-                        break
+            for j in range(2, len(s) + 1):
+                if len(s) % j == 0 and s[:len(s) // j] * j == s:
+                    ans += i
+                    break
                             
     return ans
 
